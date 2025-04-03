@@ -7,7 +7,8 @@ import { throwError } from "rxjs";
 
 const envbaseURL = process.env.NEXT_PUBLIC_BASE_URL;
 const http = axios.create({
-  baseURL: envbaseURL ?? "https://seashell-app-lq4vz.ondigitalocean.app",
+  baseURL: envbaseURL ?? "https://lionfish-app-3tfc2.ondigitalocean.app",
+  // baseURL: envbaseURL ?? "https://seashell-app-lq4vz.ondigitalocean.app",
 });
 http.interceptors.request.use(
   (request) => {
