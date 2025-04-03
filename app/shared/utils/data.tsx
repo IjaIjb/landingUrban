@@ -1,0 +1,68 @@
+export const nigeriaStates = [
+  { value: "abia", title: "Abia" },
+  { value: "adamawa", title: "Adamawa" },
+  { value: "akwa-ibom", title: "Akwa Ibom" },
+  { value: "anambra", title: "Anambra" },
+  { value: "bauchi", title: "Bauchi" },
+  { value: "bayelsa", title: "Bayelsa" },
+  { value: "benue", title: "Benue" },
+  { value: "borno", title: "Borno" },
+  { value: "cross-river", title: "Cross River" },
+  { value: "delta", title: "Delta" },
+  { value: "ebonyi", title: "Ebonyi" },
+  { value: "edo", title: "Edo" },
+  { value: "ekiti", title: "Ekiti" },
+  { value: "enugu", title: "Enugu" },
+  { value: "gombe", title: "Gombe" },
+  { value: "imo", title: "Imo" },
+  { value: "jigawa", title: "Jigawa" },
+  { value: "kaduna", title: "Kaduna" },
+  { value: "kano", title: "Kano" },
+  { value: "katsina", title: "Katsina" },
+  { value: "kebbi", title: "Kebbi" },
+  { value: "kogi", title: "Kogi" },
+  { value: "kwara", title: "Kwara" },
+  { value: "lagos", title: "Lagos" },
+  { value: "nasarawa", title: "Nasarawa" },
+  { value: "niger", title: "Niger" },
+  { value: "ogun", title: "Ogun" },
+  { value: "ondo", title: "Ondo" },
+  { value: "osun", title: "Osun" },
+  { value: "oyo", title: "Oyo" },
+  { value: "plateau", title: "Plateau" },
+  { value: "rivers", title: "Rivers" },
+  { value: "sokoto", title: "Sokoto" },
+  { value: "taraba", title: "Taraba" },
+  { value: "yobe", title: "Yobe" },
+  { value: "zamfara", title: "Zamfara" },
+  { value: "abuja", title: "Federal Capital Territory" },
+];
+
+export const merchantCategory = [
+  { value: "abia", title: "Most Popular" },
+  { value: "adamawa", title: "Less Popular" },
+  { value: "akwa-ibom", title: "Recent" },
+];
+
+export const faqsData = [
+  {
+    id: 1,
+    question: "How do i order my Urban personal card?",
+    answer: "lorem ipsum margei wwieo judook",
+  },
+  {
+    id: 2,
+    question: "How do i locate Urban merchants?",
+    answer: "lorem ipsum margei wwieo judook",
+  },
+  {
+    id: 3,
+    question: "How do i book travel?",
+    answer: "lorem ipsum margei wwieo judook",
+  },
+  {
+    id: 4,
+    question: "How do i contact support?",
+    answer: "lorem ipsum margei wwieo judook",
+  },
+];

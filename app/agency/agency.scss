@@ -1,0 +1,94 @@
+@media screen and (min-width: 320px) and (max-width: 767px) {
+}
+
+.agency-container {
+  section {
+    min-height: 25vh;
+    background-color: #fff;
+  }
+}
+
+.agency-hero-container {
+  width: 90vw;
+  min-height: 100vh - 15vh;
+  max-width: 90vw;
+  margin: auto;
+  margin-top: 10vh;
+  display: flex;
+  align-items: center;
+  font-style: italic;
+
+  @media screen and (min-width: 1680px) {
+    width: 82vw;
+    min-height: 100vh - 25vh;
+  }
+
+  @media screen and (min-width: 320px) and (max-width: 560px) {
+    flex-direction: column;
+  }
+
+  @media screen and (min-width: 562px) and (max-width: 1024px) {
+    flex-direction: column;
+  }
+
+  & ._leftSide {
+    width: 60%;
+    @media screen and (min-width: 320px) and (max-width: 560px) {
+      width: 100%;
+      padding: 2rem 0.4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      button {
+        padding: 1rem 4rem;
+        font-size: 1.2rem;
+      }
+    }
+    & .agency-heroText {
+      font-size: 3.8rem;
+      line-height: 4.4rem;
+      color: #fff;
+      @media screen and (min-width: 320px) and (max-width: 560px) {
+        font-size: 2.2rem;
+        line-height: 2.8rem;
+        text-align: center;
+        margin-top: 2rem;
+      }
+      @media screen and (min-width: 1280px) and (max-width: 1399px) {
+        font-size: 3rem;
+        line-height: 4rem;
+      }
+    }
+  }
+
+  & ._rigthSide {
+    position: relative;
+    width: 40%;
+    @media screen and (min-width: 320px) and (max-width: 560px) {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    & .agencyHeroImage {
+      position: absolute;
+      width: 34rem;
+      top: -10rem;
+      right: 0;
+      @media screen and (min-width: 320px) and (max-width: 560px) {
+        top: 6rem;
+        width: 20rem;
+        position: relative;
+      }
+
+      @media screen and (min-width: 1280px) and (max-width: 1399px) {
+        top: 8.6rem;
+        position: relative;
+      }
+      @media screen and (min-width: 1680px) {
+        width: 50rem;
+        top: -14.88rem;
+      }
+    }
+  }
+}

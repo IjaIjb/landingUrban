@@ -1,0 +1,299 @@
+@media screen and (min-width: 320px) and (max-width: 767px) {
+}
+
+.agency-container {
+  section {
+    min-height: 25vh;
+    background-color: #fff;
+  }
+}
+
+.urbancardpage-hero-container {
+  width: 90vw;
+  min-height: 100vh - 15vh;
+  max-width: 90vw;
+  margin: auto;
+  margin-top: 10vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  // font-style: italic;
+
+  @media screen and (min-width: 1680px) {
+    width: 82vw;
+    min-height: 100vh - 20vh;
+  }
+
+  @media screen and (min-width: 320px) and (max-width: 560px) {
+    flex-direction: column;
+    min-height: 100vh - 15vh;
+    width: 98vw;
+    margin-top: 8rem;
+  }
+
+  @media screen and (min-width: 562px) and (max-width: 1024px) {
+    flex-direction: column;
+  }
+  @media screen and (min-width: 1024px) and (max-width: 1279px) {
+    flex-direction: row;
+  }
+
+  & ._cardPage_hero_leftSide {
+    width: 60%;
+    @media screen and (min-width: 320px) and (max-width: 560px) {
+      width: 100%;
+      padding: 2rem 0.4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      button {
+        padding: 1rem 4rem;
+        font-size: 1.2rem;
+      }
+    }
+    @media screen and (min-width: 1024px) and (max-width: 1279px) {
+    }
+
+    .cardhereBtn {
+      @media screen and (min-width: 1024px) and (max-width: 1279px) {
+        height: 2.6rem;
+        width: 8.6rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.76rem;
+      }
+    }
+    & .cardpage-heroText {
+      font-size: 3.8rem;
+      line-height: 4.4rem;
+
+      color: #fff;
+      @media screen and (min-width: 320px) and (max-width: 560px) {
+        font-size: 2.4rem;
+        line-height: 2.8rem;
+        text-align: left;
+      }
+      @media screen and (min-width: 1280px) and (max-width: 1399px) {
+        font-size: 3rem;
+        line-height: 2rem;
+      }
+
+      @media screen and (min-width: 1024px) and (max-width: 1279px) {
+        font-size: 2rem;
+        line-height: 1.4rem;
+      }
+    }
+
+    & .cardpage-desc-img {
+      width: 18%;
+      @media screen and (min-width: 320px) and (max-width: 560px) {
+        width: 48%;
+      }
+
+      @media screen and (min-width: 1680px) {
+        width: 12vw;
+      }
+    }
+
+    & .cardpage-heroText-content {
+      font-size: 1.55rem;
+      line-height: 2.4rem;
+      font-style: normal;
+      width: 80%;
+      color: #fff;
+      @media screen and (min-width: 320px) and (max-width: 560px) {
+        font-size: 1.2rem;
+        line-height: 1.8rem;
+        text-align: left;
+        width: 98%;
+      }
+      @media screen and (min-width: 1280px) and (max-width: 1399px) {
+        font-size: 1.2rem;
+        line-height: 2rem;
+      }
+
+      @media screen and (min-width: 1024px) and (max-width: 1279px) {
+        font-size: 1rem;
+        line-height: 1.4rem;
+      }
+    }
+  }
+
+  & ._cardPage_hero_rigthSide {
+    width: 40%;
+    margin-right: -10rem;
+    z-index: 1;
+    @media screen and (min-width: 320px) and (max-width: 560px) {
+      width: 100%;
+      display: unset;
+      justify-content: center;
+      margin-right: 0;
+    }
+
+    img {
+      position: absolute;
+      top: 1rem;
+      right: 0rem;
+      width: 40.8rem;
+
+      @media screen and (min-width: 320px) and (max-width: 560px) {
+        top: 0rem;
+        left: 0;
+        right: 0rem;
+        position: unset;
+        width: 58.8rem;
+      }
+
+      @media screen and (min-width: 1024px) and (max-width: 1279px) {
+        width: 30rem;
+        top: 0.6rem;
+        right: -5rem;
+      }
+
+      @media screen and (min-width: 1280px) and (max-width: 1399px) {
+        width: 36rem;
+        top: 0.6rem;
+        right: -2rem;
+      }
+      @media screen and (min-width: 1680px) {
+        width: 48rem;
+        top: 2rem;
+        right: -2rem;
+      }
+    }
+  }
+}
+
+.cardsection-container {
+  @media screen and (min-width: 1280px) and (max-width: 1399px) {
+    margin-top: -10rem;
+  }
+}
+
+.card-slider-section {
+  button {
+    @media screen and (min-width: 1680px) {
+      font-size: 1.2rem !important;
+      padding: 1rem 4rem;
+    }
+  }
+  @media screen and (min-width: 1280px) and (max-width: 1399px) {
+    margin-top: 2rem;
+  }
+}
+.sliderh3 {
+  @media screen and (min-width: 1680px) {
+    font-size: 1.6rem !important;
+  }
+}
+
+.mycardSwiper {
+  @media screen and (min-width: 320px) and (max-width: 560px) {
+    margin-top: -4rem;
+  }
+}
+
+.border2 {
+  border: 2px solid #fff;
+}
+
+// ================= swipe section ====================
+.card-swipe-section {
+  // width: 95%;
+  margin-left: 5%;
+  display: flex;
+  gap: 4rem;
+  overflow: hidden;
+  margin-top: 6rem;
+  @media screen and (min-width: 320px) and (max-width: 560px) {
+    flex-direction: column;
+    margin-left: unset;
+    min-height: 10rem;
+    margin-top: 2rem;
+  }
+
+  @media screen and (min-width: 1024px) and (max-width: 1280px) {
+    margin-bottom: 10rem;
+  }
+
+  & .card-swipe-image {
+    width: 15rem;
+    @media screen and (min-width: 320px) and (max-width: 560px) {
+      width: 50%;
+      margin: auto;
+    }
+    @media screen and (min-width: 1024px) and (max-width: 1280px) {
+      width: 10rem;
+    }
+    @media screen and (min-width: 1280px) and (max-width: 1399px) {
+      width: 14rem;
+    }
+    @media screen and (min-width: 1680px) {
+      width: 18%;
+    }
+  }
+
+  & .card-swipe-container {
+    width: 70%;
+    position: relative;
+    overflow: hidden;
+
+    @media screen and (min-width: 320px) and (max-width: 560px) {
+      width: 100%;
+      overflow: hidden;
+      margin-top: 2rem;
+      min-height: 46rem;
+    }
+  }
+
+  & .stepscards-container {
+    position: absolute;
+    display: flex;
+    gap: 1rem;
+    transition: all 0.8s ease-in-out;
+    overflow: hidden;
+    @media screen and (min-width: 320px) and (max-width: 560px) {
+      flex-direction: column;
+      // width: 100vw;
+      position: unset;
+      overflow: scroll;
+    }
+  }
+
+  & .change-postion-left {
+    left: 0rem;
+
+    @media screen and (min-width: 1680px) {
+      left: 0;
+    }
+  }
+  & .change-postion-right {
+    left: -16rem;
+    @media screen and (min-width: 1024px) and (max-width: 1280px) {
+      left: -36rem;
+    }
+    @media screen and (min-width: 1280px) and (max-width: 1399px) {
+      left: -24rem;
+    }
+  }
+}
+
+.faqstransition {
+  transition: all 0.8s ease-in;
+}
+
+//=============== manage cooperate card
+
+.managecardImg {
+  width: 30rem;
+  @media screen and (min-width: 1024px) and (max-width: 1279px) {
+    width: 20rem;
+  }
+  @media screen and (min-width: 1280px) and (max-width: 1399px) {
+    width: 24rem;
+  }
+  @media screen and (min-width: 1680px) {
+  }
+}

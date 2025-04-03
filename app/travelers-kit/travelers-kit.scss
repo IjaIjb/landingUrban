@@ -1,0 +1,106 @@
+@media screen and (min-width: 320px) and (max-width: 767px) {
+}
+
+.kit-container {
+  section {
+    min-height: 25vh;
+    background-color: #fff;
+  }
+}
+
+.kit-hero-container {
+  width: 90vw;
+  min-height: 100vh - 28vh;
+  max-width: 90vw;
+  margin: auto;
+  margin-top: 10vh;
+  display: flex;
+  align-items: center;
+  font-style: italic;
+
+  @media screen and (min-width: 1680px) {
+    width: 82vw;
+    min-height: 100vh - 28vh;
+  }
+
+  @media screen and (min-width: 320px) and (max-width: 560px) {
+    flex-direction: column;
+    min-height: 108vh;
+  }
+
+  @media screen and (min-width: 562px) and (max-width: 1024px) {
+    flex-direction: column;
+  }
+
+  & ._leftSide {
+    width: 60%;
+    @media screen and (min-width: 320px) and (max-width: 560px) {
+      width: 100%;
+      padding: 2rem 0rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      button {
+        padding: 1rem 4rem;
+        font-size: 1.2rem;
+      }
+    }
+    & .travlerskit-heroText {
+      font-size: 3.6rem;
+      line-height: 4.4rem;
+      color: #fff;
+      @media screen and (min-width: 320px) and (max-width: 560px) {
+        font-size: 2.8rem;
+        line-height: 2.8rem;
+        text-align: center;
+        margin-top: 2rem;
+      }
+      @media screen and (min-width: 1280px) and (max-width: 1399px) {
+        font-size: 3rem;
+        line-height: 4rem;
+      }
+    }
+  }
+
+  & ._kitrigthSide {
+    // position: relative;
+    width: 40%;
+    margin-right: -10rem;
+    z-index: 1;
+    @media screen and (min-width: 320px) and (max-width: 560px) {
+      width: 100%;
+      display: flex;
+      margin-right: 0;
+      justify-content: center;
+
+      align-items: center;
+    }
+
+    img {
+      position: absolute;
+      top: 8rem;
+      right: 0rem;
+      width: 32rem;
+      // color: #a7a7ab;
+
+      @media screen and (min-width: 320px) and (max-width: 560px) {
+        top: 2rem;
+        left: 0rem;
+        width: 24rem;
+        position: relative;
+      }
+
+      @media screen and (min-width: 1280px) and (max-width: 1399px) {
+        width: 30rem;
+        top: 5.6rem;
+        right: 0rem;
+      }
+      @media screen and (min-width: 1680px) {
+        width: 38rem;
+        top: 12rem;
+        right: 0rem;
+      }
+    }
+  }
+}

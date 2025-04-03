@@ -1,0 +1,20 @@
+.footer-input {
+  height: 40px !important;
+  outline: none !important;
+  padding: 0rem 0.8rem;
+
+  input {
+    height: 20px;
+    padding: 0.4rem !important;
+  }
+}
+
+.footer-urban-area {
+  @media screen and (min-width: 1200px) and (max-width: 1439px) {
+  }
+  & .urban-footer-icons {
+    & p {
+      font-size: 0.8rem;
+    }
+  }
+}
