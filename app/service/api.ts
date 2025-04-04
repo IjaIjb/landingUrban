@@ -5,6 +5,7 @@ import { throwError } from "rxjs";
 
 // prod = https://lionfish-app-3tfc2.ondigitalocean.app"
 
+
 export const envbaseURL = process.env.NEXT_PUBLIC_BASE_URL;
 const http = axios.create({
   // baseURL: envbaseURL ?? "https://seashell-app-lq4vz.ondigitalocean.app",
