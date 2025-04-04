@@ -122,7 +122,7 @@ export default function PassengerDetails() {
     const step3Data: any = localStorage.getItem("thirdStep");
     const step2Data: any = localStorage.getItem("secondStep");
     const bookingsData = JSON.parse(step2Data);
-    const bookSeats = bookingsData.bookings.map((item: any) => item.seatNumber);
+    const bookSeats = bookingsData?.bookings.map((item: any) => item.seatNumber);
     //get all already booked seats in the vehicle
     setbookedSeats(bookSeats);
     const thirdStep = JSON.parse(step3Data);
@@ -156,7 +156,7 @@ export default function PassengerDetails() {
       // setnoPassengers(arrayPassgrs);
     }
   }, []);
-console.log(secondStepData)
+// console.log(secondStepData)
   useEffect(() => {
     handleValidation();
   }, [passengers]);
@@ -405,7 +405,7 @@ console.log(secondStepData)
                 <div className="mt-4">
                   <div className="h-80 bg-slate-100 overflow-hidden">
                     {/* <MapWithPath /> */}
-                    {Object.keys(secondStepData).length > 0 && (
+                    {Object?.keys(secondStepData).length > 0 && (
                       <LazyMap
                         depatPath={secondStepData.depatPath}
                         destinPath={secondStepData.destinPath}

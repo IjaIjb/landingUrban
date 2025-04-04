@@ -14,6 +14,9 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import Footer from "./shared/components/footer/footer";
 import AppAd from "./shared/components/app-ad/app-ad";
 import Link from "next/link";
+import ReferralModal from "./shared/components/referral/Modal";
+import ReferralsModal from "./shared/components/referral/ReferralsModal";
+import ReferralFormModal from "./shared/components/referral/ReferralFormModal";
 
 export default function Home() {
   const [ismovileNavOpen, setismovileNavOpen] = useState(false);
@@ -372,18 +375,23 @@ export default function Home() {
                   <div className="w-full">
                     <div className="mt-8 flex justify-start w-full lg:w-8/12 gap-4 2xl:w-9/12">
                       <button
-                      onClick={() => {
-                        window.location.href = "https://park.urban.ng/register"; 
-                      }}
-                       className="w-1/2 rounded-md py-3 px-4 border-none bg-urban-green text-white lg:text-sm xl:text-base 2xlpy-4 2xl:px-14 2xl:text-xl">
+                        onClick={() => {
+                          window.location.href =
+                            "https://park.urban.ng/register";
+                        }}
+                        className="w-1/2 rounded-md py-3 px-4 border-none bg-urban-green text-white lg:text-sm xl:text-base 2xlpy-4 2xl:px-14 2xl:text-xl"
+                      >
                         Own A Park
                       </button>
 
                       <button
-                      onClick={() => {
-                        window.location.href = "https://fleet.urban.ng/register"; 
-                      }} className="w-1/2 rounded-md py-3 px-2 bg-white text-urban-black lg:text-sm xl:text-base 2xl:py-4 2xl:px-14 2xl:text-xl">
-                        Join our Fleet 
+                        onClick={() => {
+                          window.location.href =
+                            "https://fleet.urban.ng/register";
+                        }}
+                        className="w-1/2 rounded-md py-3 px-2 bg-white text-urban-black lg:text-sm xl:text-base 2xl:py-4 2xl:px-14 2xl:text-xl"
+                      >
+                        Join our Fleet
                       </button>
                     </div>
                   </div>
@@ -499,6 +507,9 @@ export default function Home() {
         <Footer />
         {/* -------------------------------------- */}
       </main>
+      <ReferralModal />
+      <ReferralsModal />
+      <ReferralFormModal />
     </>
   );
 }

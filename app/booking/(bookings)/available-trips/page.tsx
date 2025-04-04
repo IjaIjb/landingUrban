@@ -29,8 +29,8 @@ export default function availableTrips() {
   });
 
   const router = useRouter();
-console.log(tabs)
-console.log(allTrips)
+// console.log(tabs)
+// console.log(allTrips)
   const fetchTrips = (payload?: any) => {
     const queryApi = () => {
       setisloading(true);

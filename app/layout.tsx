@@ -5,6 +5,7 @@ import localfont from "next/font/local";
 import Navbar from "./shared/components/navbar/navbar";
 import Head from "next/head";
 import { useEffect } from "react";
+import ChatComponent from "./shared/components/customer-care-chat/chat";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -76,6 +77,7 @@ export default function RootLayout({
       <body className={creatoDisplay.className}>
         <Navbar />
         {children}
+        <ChatComponent />
       </body>
     </html>
   );

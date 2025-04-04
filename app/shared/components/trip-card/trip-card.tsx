@@ -73,8 +73,8 @@ export default function TripCard({ data }: any) {
   }`;
   const seats = vehicleType.numberOfSeats - 1;
   const availableSeats = seats - bookings.length;
-console.log(tripVehicle)
-console.log(seats)
+// console.log(tripVehicle)
+// console.log(seats)
   return (
     <div className="w-full lg:w-[100%] h-[30rem] bg-white overflow-hidden rounded-xl card-shadow relative">
       <div className="w-full bg-urban-green h-44 lg:h-40 flex items-center py-2 px-4">

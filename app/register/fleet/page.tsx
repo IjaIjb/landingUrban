@@ -70,10 +70,10 @@ const Page = () => {
 
   const onSubmit = async (values: any) => {
     setIsLoading(true); // Set loading state
-    console.log(values);
+    // console.log(values);
     try {
       const response: any = await addIndividual(values); // Using http2
-      console.log("Added individual:", response);
+      // console.log("Added individual:", response);
       setIsLoading(false); // Set loading state
       toast.success(response?.message);
       // router.push("/");

@@ -5,10 +5,10 @@ import { throwError } from "rxjs";
 
 // prod = https://lionfish-app-3tfc2.ondigitalocean.app"
 
-const envbaseURL = process.env.NEXT_PUBLIC_BASE_URL;
+export const envbaseURL = process.env.NEXT_PUBLIC_BASE_URL;
 const http = axios.create({
-  baseURL: envbaseURL ?? "https://lionfish-app-3tfc2.ondigitalocean.app",
   // baseURL: envbaseURL ?? "https://seashell-app-lq4vz.ondigitalocean.app",
+  baseURL: envbaseURL ?? "https://lionfish-app-3tfc2.ondigitalocean.app",
 });
 http.interceptors.request.use(
   (request) => {
