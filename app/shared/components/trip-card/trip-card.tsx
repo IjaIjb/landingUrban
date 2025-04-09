@@ -33,7 +33,7 @@ export default function TripCard({ data }: any) {
     finalBusStop,
     vehicleType
   } = data;
-
+console.log(data)
   const router = useRouter();
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {

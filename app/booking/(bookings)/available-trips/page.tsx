@@ -23,21 +23,21 @@ export default function availableTrips() {
     departureState: "",
     destinationState: "",
     departureDate: null,
-    vehicleType: "bus",
+    // vehicleType: "bus",
     search: "",
     description: "",
   });
 
   const router = useRouter();
-// console.log(tabs)
-// console.log(allTrips)
+  // console.log(tabs)
+  // console.log(allTrips)
   const fetchTrips = (payload?: any) => {
     const queryApi = () => {
       setisloading(true);
       getTrips(payload ? { ...payload } : { ...mergedParams }).subscribe({
         next: (res) => {
           if (res) {
-            // console.log("===>trips", res);
+            console.log("===>trips", res);
             setallTrips(res.data);
             if (res.data?.length) {
               localStorage.setItem(

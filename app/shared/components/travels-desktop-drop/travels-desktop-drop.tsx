@@ -1,9 +1,11 @@
+import useReferralStore from "@/providers/referral..providers";
+import { Link } from "lucide-react";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, MouseEvent } from "react";
 
-type PropT = {
-  settravelersPage: Function;
-  setisTravelsDropOpen: Function;
+type TravelsDesktopDropProps = {
+  settravelersPage: (page: string) => void;
+  setisTravelsDropOpen: (isOpen: boolean) => void;
   isTravelsDropOpen: boolean;
 };
 
@@ -11,121 +13,132 @@ export default function TravelsDesktopDrop({
   setisTravelsDropOpen,
   settravelersPage,
   isTravelsDropOpen,
-}: PropT) {
+}: TravelsDesktopDropProps) {
   const router = useRouter();
-  const modalRef: any = useRef(null);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const { setReferralModal } = useReferralStore();
 
-  const handleOutsideClick = (event: any) => {
-    // Check if the click is outside the modal
-    if (modalRef.current && !modalRef.current.contains(event.target)) {
-      setisTravelsDropOpen(false); // Close the modal
+  const handleOutsideClick = (event: MouseEvent) => {
+    if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+      setisTravelsDropOpen(false);
     }
   };
 
   useEffect(() => {
-    if (isTravelsDropOpen && window.innerWidth >= 1024) {
-      // Add event listener when modal is open
-      document.addEventListener("mousedown", handleOutsideClick);
-    } else {
-      // Remove event listener when modal is closed
-      document.removeEventListener("mousedown", handleOutsideClick);
-    }
+    if (!isTravelsDropOpen) return;
 
-    // Clean up the event listener when the component unmounts
-    return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
+    const handleClick = (event: globalThis.MouseEvent) => {
+      handleOutsideClick(event as unknown as MouseEvent);
     };
+
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
   }, [isTravelsDropOpen]);
 
-  if (!isTravelsDropOpen) return null; // Return null if modal is not open
+  const handleItemClick = (page: string, path: string) => {
+    settravelersPage(page);
+    setisTravelsDropOpen(false);
+    router.push(path);
+  };
+
+  const handleReferralClick = () => {
+    setReferralModal(true);
+    setisTravelsDropOpen(false);
+  };
+
+  if (!isTravelsDropOpen) return null;
+
+  const menuItems = [
+    {
+      icon: "./assets/parkIcon.svg",
+      title: "Park",
+      description: "Join our network of park partners.",
+      page: "Urban Card",
+      path: "/park",
+    },
+    {
+      icon: "./assets/fleetIcon.svg",
+      title: "Fleet",
+      description: "Join our growing community of fleet partners.",
+      page: "fleet",
+      path: "/fleet",
+    },
+    {
+      icon: "./assets/providersIcon.svg",
+      title: "Provider's agency",
+      description:
+        "Take the Urban wheel and experience a level of driving purity.",
+      page: "Urban Card",
+      path: "/agency",
+    },
+    {
+      icon: "./assets/travelersIcon.svg",
+      title: "Traveler's Club",
+      description: "Where to next? Go with Urban.",
+      page: "Urban Card",
+      path: "/travelers-club",
+    },
+    {
+      icon: "./assets/travelerskit.svg",
+      title: "Traveler's Kit",
+      description: "Brilliant travel accessories for every traveler.",
+      page: "Urban Card",
+      path: "/travelers-kit",
+    },
+  ];
+
+  const firstColumnItems = menuItems.slice(0, 3);
+  const secondColumnItems = menuItems.slice(3);
 
   return (
-    <div className="travelersItems-container-t py-4" ref={modalRef}>
+    <div
+      className="travelersItems-container-t hidden md:block py-4"
+      ref={modalRef}
+    >
       <div className="mb-4">
         <hr />
       </div>
       <div className="flex flex-col lg:flex-row gap-2 over">
-        <div className="lg:w-1/2 flex flex-col gap-4  w-full">
-          <div
-            className="item font-creato font-light flex flex-row gap-2 items-start hover:bg-slate-100 p-2"
-            onClick={() => {
-              settravelersPage("Urban Card");
-              setisTravelsDropOpen(!isTravelsDropOpen);
-              router.push("/park");
-            }}
-          >
-            <img src="./assets/parkIcon.svg" alt="" />
-            <div>
-              <h4 className="font-bold">Park</h4>
-              <p className="text-sm">Join our network of park partners.</p>
+        <div className="lg:w-1/2 flex flex-col gap-4 w-full">
+          {firstColumnItems.map((item, index) => (
+            <div
+              key={index}
+              className="item font-creato font-light flex flex-row gap-2 items-start hover:bg-slate-100 p-2 cursor-pointer"
+              onClick={() => handleItemClick(item.page, item.path)}
+            >
+              <img src={item.icon} alt={item.title} />
+              <div>
+                <h4 className="font-bold">{item.title}</h4>
+                <p className="text-sm">{item.description}</p>
+              </div>
             </div>
-          </div>
-
-          <div
-            className="item font-creato font-light flex flex-row gap-2 items-start hover:bg-slate-100 p-2"
-            onClick={() => {
-              settravelersPage("fleet");
-              setisTravelsDropOpen(!isTravelsDropOpen);
-              router.push("/fleet");
-            }}
-          >
-            <img src="./assets/fleetIcon.svg" alt="" />
-            <div>
-              <h4 className="font-bold">Fleet</h4>
-              <p className="text-sm">
-                Join our growing community of fleet partners.
-              </p>
-            </div>
-          </div>
-
-          <div
-            className="item font-creato font-light flex flex-row gap-2 items-start hover:bg-slate-100 p-2"
-            onClick={() => {
-              settravelersPage("Urban Card");
-              setisTravelsDropOpen(!isTravelsDropOpen);
-              router.push("/agency");
-            }}
-          >
-            <img src="./assets/providersIcon.svg" alt="" />
-            <div>
-              <h4 className="font-bold">Provider’s agency</h4>
-              <p className="text-sm">
-                Take the Urban wheel and experience a level of driving purity.
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
 
         <div className="w-full lg:w-1/2 flex flex-col gap-4">
-          <div
-            className="item font-creato font-light flex flex-row gap-2 items-start hover:bg-slate-100 p-2"
-            onClick={() => {
-              settravelersPage("Urban Card");
-              setisTravelsDropOpen(!isTravelsDropOpen);
-              router.push("/travelers-club");
-            }}
-          >
-            <img src="./assets/travelersIcon.svg" alt="" />
-            <div>
-              <h4 className="font-bold">Traveler’s Club</h4>
-              <p className="text-sm">Where to next? Go with Urban.</p>
+          {secondColumnItems.map((item, index) => (
+            <div
+              key={index}
+              className="item font-creato font-light flex flex-row gap-2 items-start hover:bg-slate-100 p-2 cursor-pointer"
+              onClick={() => handleItemClick(item.page, item.path)}
+            >
+              <img src={item.icon} alt={item.title} />
+              <div>
+                <h4 className="font-bold">{item.title}</h4>
+                <p className="text-sm">{item.description}</p>
+              </div>
             </div>
-          </div>
+          ))}
 
+          {/* Referral Campaign Button */}
           <div
-            className="item font-creato font-light flex flex-row gap-2 items-start hover:bg-slate-100 p-2"
-            onClick={() => {
-              settravelersPage("Urban Card");
-              setisTravelsDropOpen(!isTravelsDropOpen);
-              router.push("/travelers-kit");
-            }}
+            className="item font-creato font-light flex flex-row gap-2 items-start hover:bg-slate-100 p-2 cursor-pointer"
+            onClick={handleReferralClick}
           >
-            <img src="./assets/travelerskit.svg" alt="" />
+            <Link className=" text-primary" />
             <div>
-              <h4 className="font-bold">Traveler’s Kit</h4>
-              <p className="text-sm">
-                Brilliant travel accessories for every traveler.
-              </p>
+              <h4 className="font-bold">Referral Program</h4>
+              <p className="text-sm">Earn rewards by inviting friends</p>
             </div>
           </div>
         </div>

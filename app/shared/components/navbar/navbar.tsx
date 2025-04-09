@@ -15,6 +15,11 @@ import RegisterDialog from "../register-dialog/register-dialog";
 import TravelsDesktopDrop from "../travels-desktop-drop/travels-desktop-drop";
 import CardDesktopDrop from "../card-desktop-drop copy/card-desktop-drop";
 import CompanyDesktopDrop from "../company-desktop-drop/company-desktop-drop";
+import useReferralStore from "@/providers/referral..providers";
+import { Link2 } from "lucide-react";
+import { Button } from "@/components/UI/button";
+import { m } from "framer-motion";
+import { ScrollArea } from "@/components/UI/scroll-area";
 
 export default function Navbar({ setMobileVisibility }: any) {
   const [selectedTab, setselectedTab] = useState("Home");
@@ -156,43 +161,19 @@ export default function Navbar({ setMobileVisibility }: any) {
     };
   }, []);
 
-  // useEffect(() => {
-  //   const totalDays = 1;
-  //   const totalSeconds = totalDays * 24 * 60 * 60;
-  //   const intervalTime = 1000;
-  //   const fadeStep = 1 / totalSeconds;
-  //   let opacity = 1;
-  //   const fadeBody = () => {
-  //     if (opacity > 0.01) {
-  //       opacity -= fadeStep;
-  //       document.body.style.opacity = opacity.toFixed(6);
-  //     } else {
-  //       clearInterval(interval);
-  //     }
-  //   };
-
-  //   const interval = setInterval(fadeBody, intervalTime);
-
-  //   return () => clearInterval(interval); // Cleanup when component unmounts
-  // }, []);
-
   useEffect(() => {
-    const handleClickOutside = (event: any) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (!dropdownRef.current?.contains(event.target as Node)) {
         setisTravelsDropOpen(false);
-      } else {
-        return;
       }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("mousein", handleClickOutside);
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("mousein", handleClickOutside);
     };
-  }, [dropdownRef]);
-
+  }, []);
   return (
     <>
       {pathname !== "/register/fleet" && pathname !== "/register/park" && (
@@ -426,18 +407,16 @@ export default function Navbar({ setMobileVisibility }: any) {
                 open={isOpen}
                 className="bg-white rounded-xl p-3 w-full top-16  overflow-scroll"
               >
-                <div className="flex flex-col justify-between h-[84vh] ">
-                  <div>
+                <ScrollArea className="flex flex-col  justify-between h-[80vh] ">
+                  <div className=" space-y-6">
                     {tabsData.map((tab, index: number) => (
                       <div key={index}>
-                        {tab.title !== "Travels" &&
-                          tab.title !== "Card" &&
+                        {tab.title !== "Travel" &&
+                          tab.title !== "Cards" &&
                           tab.title !== "Company" && (
                             <div
-                              className={`flex items-center gap-1 justify-center py-3 border ${
-                                index > 0
-                                  ? "border-t-gray-100 border-l-0 border-r-0"
-                                  : ""
+                              className={`flex items-center gap-1 justify-center py-3 ${
+                                index > 0 ? "border-b border-b-slate-100 " : ""
                               }`}
                               onClick={() => {
                                 setselectedTab(tab.title);
@@ -461,54 +440,54 @@ export default function Navbar({ setMobileVisibility }: any) {
                             </div>
                           )}
 
-                        {tab.title == "Travels" && isOpen && (
-                          <div className="mt-2 relative py-2 flex justify-center">
-                            <div className="relative flex justify-center gap-x-2">
+                        {tab.title == "Travel" && isOpen && (
+                          <div className="mt-2 relative flex flex-col items-center z-[100]">
+                            <div
+                              onClick={(e) => {
+                                setisTravelsDropOpen((prev) => !prev);
+                              }}
+                              className="relative flex py-2 z-[101] justify-center border-b border-[#f1f1f1] gap-x-2 w-full cursor-pointer"
+                            >
                               <div
-                                className={` cursor-pointer lg:text-base xl:text-base 2xl:text-base hover:underline hover:text-urban-green ${
+                                className={`lg:text-base xl:text-base 2xl:text-base hover:underline hover:text-urban-green ${
                                   selectedTab === tab.title
                                     ? "font-semibold text-urban-green underline"
-                                    : " text-urban-black"
+                                    : "text-urban-black"
                                 }`}
                               >
-                                Travelers
+                                Travel
                               </div>
-                              <div
-                                className="arrow-down"
-                                onClick={() => {
-                                  setisTravelsDropOpen(!isTravelsDropOpen);
-                                }}
-                              >
+                              <div className="arrow-down">
                                 <KeyboardArrowDownIcon
                                   sx={{ fontSize: "1.4rem" }}
                                 />
                               </div>
                             </div>
 
+                            {/* Show the same Travels dropdown on mobile */}
                             {isTravelsDropOpen && (
-                              <TravelsDesktopDrop
+                              <TravelMobileDrop
+                                setMobileVisibility={setMobileVisibility}
+                                setisOpen={setisOpen}
                                 isTravelsDropOpen={isTravelsDropOpen}
-                                setisTravelsDropOpen={(value: any) => {
-                                  setisTravelsDropOpen(value);
-                                  setisOpen(false);
-                                }}
+                                setisTravelsDropOpen={setisTravelsDropOpen}
                                 settravelersPage={settravelersPage}
                               />
                             )}
                           </div>
                         )}
 
-                        {tab.title == "Card" && isOpen && (
-                          <div className="mt-2 relative  py-2 flex justify-center">
-                            <div className="relative flex justify-center gap-x-2">
+                        {tab.title == "Cards" && isOpen && (
+                          <div className="mt-2 relative flex justify-center">
+                            <div className="relative flex justify-center gap-x-2 border-b border-[#f1f1f1] w-full py-2">
                               <div
-                                className={` cursor-pointer lg:text-base xl:text-base 2xl:text-base hover:underline hover:text-urban-green ${
+                                className={`cursor-pointer lg:text-base xl:text-base 2xl:text-base hover:underline hover:text-urban-green ${
                                   selectedTab === tab.title
                                     ? "font-semibold text-urban-green underline"
-                                    : " text-urban-black"
+                                    : "text-urban-black"
                                 }`}
                               >
-                                Card
+                                Cards
                               </div>
                               <div
                                 className="arrow-down"
@@ -536,13 +515,13 @@ export default function Navbar({ setMobileVisibility }: any) {
                         )}
 
                         {tab.title == "Company" && isOpen && (
-                          <div className="mt-2 relative border border-slate-100 py-2 flex justify-center">
+                          <div className="mt-2 relative border-b border-b-[#f1f1f1] py-2 flex justify-center">
                             <div className="relative flex justify-center gap-x-2">
                               <div
-                                className={` cursor-pointer lg:text-base xl:text-base 2xl:text-base hover:underline hover:text-urban-green ${
+                                className={`cursor-pointer lg:text-base xl:text-base 2xl:text-base hover:underline hover:text-urban-green ${
                                   selectedTab === tab.title
                                     ? "font-semibold text-urban-green underline"
-                                    : " text-urban-black"
+                                    : "text-urban-black"
                                 }`}
                               >
                                 Company
@@ -610,7 +589,7 @@ export default function Navbar({ setMobileVisibility }: any) {
                     </div>
                   </div>
 
-                  <div className="rounded-xl bg-urban-black p-3 w-full py-4 flex justify-between gap-8">
+                  <div className="rounded-xl mt-5 bg-urban-black p-3 w-full py-4 flex justify-between gap-8">
                     <div className="w-1/2">
                       <Image
                         src="/assets/mobilefooterLogo.svg"
@@ -654,7 +633,7 @@ export default function Navbar({ setMobileVisibility }: any) {
                       </div>
                     </div>
                   </div>
-                </div>
+                </ScrollArea>
               </dialog>
             </div>
 
@@ -672,3 +651,121 @@ export default function Navbar({ setMobileVisibility }: any) {
     </>
   );
 }
+
+interface TravelMobileDropProps {
+  isTravelsDropOpen: boolean;
+  setMobileVisibility: React.Dispatch<React.SetStateAction<boolean>>;
+  setisOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setisTravelsDropOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  settravelersPage: (page: string) => void;
+}
+
+const TravelMobileDrop: React.FC<TravelMobileDropProps> = ({
+  isTravelsDropOpen,
+  setMobileVisibility,
+  setisOpen,
+  setisTravelsDropOpen,
+  settravelersPage,
+}) => {
+  const router = useRouter();
+  const { setReferralModal } = useReferralStore();
+
+  const handleItemClick = (page: string, path: string) => {
+    // console.log("Navigating to:", path); // Debug log
+    // settravelersPage(page);
+    // setisTravelsDropOpen(false);
+    // setisOpen(false);
+    // router.push(path);
+  };
+
+  const handleReferralClick = (e: React.MouseEvent) => {
+    // e.stopPropagation();
+    // console.log("Referral Clicked");
+    // setReferralModal(true);
+    // setisTravelsDropOpen(false);
+    // setisOpen(false);
+    // setMobileVisibility(false);
+  };
+
+  if (!isTravelsDropOpen) return null;
+
+  const menuItems = [
+    {
+      icon: "./assets/parkIcon.svg",
+      title: "Park",
+      description: "Join our network of park partners.",
+      page: "Urban Card",
+      path: "/park",
+    },
+    {
+      icon: "./assets/fleetIcon.svg",
+      title: "Fleet",
+      description: "Join our growing community of fleet partners.",
+      page: "fleet",
+      path: "/fleet",
+    },
+    {
+      icon: "./assets/providersIcon.svg",
+      title: "Provider's agency",
+      description:
+        "Take the Urban wheel and experience a level of driving purity.",
+      page: "Urban Card",
+      path: "/agency",
+    },
+    {
+      icon: "./assets/travelersIcon.svg",
+      title: "Traveler's Club",
+      description: "Where to next? Go with Urban.",
+      page: "Urban Card",
+      path: "/travelers-club",
+    },
+    {
+      icon: "./assets/travelerskit.svg",
+      title: "Traveler's Kit",
+      description: "Brilliant travel accessories for every traveler.",
+      page: "Urban Card",
+      path: "/travelers-kit",
+    },
+  ];
+
+  return (
+    <div
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
+      className="w-full px-4 mt-2  z-[1000] pointer-events-auto relative"
+    >
+      <div className="flex flex-col space-y-2 py-2">
+        {menuItems.map((item, index) => (
+          <div
+            key={index}
+            // onClick={(e) => {
+            //   e.stopPropagation();
+            //   handleItemClick(item.page, item.path);
+            // }}
+            className="flex flex-row gap-2 z-[1000] items-start p-2 hover:bg-slate-100 cursor-pointer border-b border-gray-100 active:bg-gray-200"
+          >
+            <img src={item.icon} alt={item.title} className="w-6 h-6" />
+            <div>
+              <h4 className="font-bold text-sm">{item.title}</h4>
+              <p className="text-xs text-gray-600">{item.description}</p>
+            </div>
+          </div>
+        ))}
+
+        <div
+          // onClick={handleReferralClick}
+          className="flex flex-row gap-2 items-start p-4 bg-gray-100 cursor-pointer active:bg-gray-200"
+        >
+          <Link2 className="text-primary w-6 h-6 mt-1" />
+          <div>
+            <h4 className="font-bold text-sm">Referral Program</h4>
+            <p className="text-xs text-gray-600">
+              Earn rewards by inviting friends
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};

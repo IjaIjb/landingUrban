@@ -72,7 +72,7 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 export default function ReferralForm() {
-  const { terms, setTerms } = useReferralStore();
+  const { terms, setTerms, setApply } = useReferralStore();
   const { trigger, isMutating } = useSWRMutation(
     "/add-individual",
     postApiService
@@ -208,10 +208,6 @@ export default function ReferralForm() {
         </div>
       </div>
     );
-  }
-
-  if (terms) {
-    return <ReferralTerms />;
   }
 
   return (
@@ -363,6 +359,7 @@ export default function ReferralForm() {
                       I accept the{" "}
                       <Button
                         onClick={() => {
+                          setApply(false);
                           setTerms(true);
                         }}
                         type="button"

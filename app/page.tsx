@@ -17,6 +17,7 @@ import Link from "next/link";
 import ReferralModal from "./shared/components/referral/Modal";
 import ReferralsModal from "./shared/components/referral/ReferralsModal";
 import ReferralFormModal from "./shared/components/referral/ReferralFormModal";
+import ReferralTermsModal from "./shared/components/referral/ReferralTermsModal";
 
 export default function Home() {
   const [ismovileNavOpen, setismovileNavOpen] = useState(false);
@@ -510,6 +511,7 @@ export default function Home() {
       <ReferralModal />
       <ReferralsModal />
       <ReferralFormModal />
+      <ReferralTermsModal />
     </>
   );
 }
