@@ -51,7 +51,7 @@ console.log(data)
       parkState: departure.region,
       parkname: "---",
       fare: parseInt(cost),
-      vehicleType: tripVehicle?.vehicleType.category,
+      vehicleType: tripVehicle?.vehicleType?.category,
       departureCity: departure.city,
       destinationCity: finalBusStop.locationCity.name,
       departureTime: departureTime,
@@ -71,7 +71,7 @@ console.log(data)
   const journey: string = `${departure?.locationCity?.name ?? "---"} to ${
     finalBusStop.locationCity.name ?? "---"
   }`;
-  const seats = vehicleType.numberOfSeats - 1;
+  const seats = vehicleType?.numberOfSeats - 1;
   const availableSeats = seats - bookings.length;
 // console.log(tripVehicle)
 // console.log(seats)
@@ -119,7 +119,7 @@ console.log(data)
                 Pickup park
               </h5>
               <p className="font-light text-sm lg;text-base">
-                {departure.locationCity.name}, {departure.region}
+                {departure?.locationCity?.name}, {departure?.region}
               </p>
             </div>
             <div className="">

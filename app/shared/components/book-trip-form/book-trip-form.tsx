@@ -45,38 +45,38 @@ export default function BookTripForm() {
     setisformValid(isValid);
   };
 
-  const fetchVehicleTypes = (payload?: any) => {
-    const queryApi = () => {
-      getVehicleTypes({}).subscribe({
-        next: (res) => {
-          if (res) {
-            if (res.data?.length) {
-              const vehicletypes = res.data.map((obj: any) => obj.category);
-              console.log("===>vehicle types", vehicletypes);
-              localStorage.setItem(
-                "vehicleTypes",
-                JSON.stringify(vehicletypes)
-              );
-            }
-          } else {
-          }
-        },
-        error: () => {},
-        complete: () => {},
-      });
-    };
+  // const fetchVehicleTypes = (payload?: any) => {
+  //   const queryApi = () => {
+  //     getVehicleTypes({}).subscribe({
+  //       next: (res) => {
+  //         if (res) {
+  //           if (res.data?.length) {
+  //             const vehicletypes = res.data.map((obj: any) => obj.category);
+  //             console.log("===>vehicle types", vehicletypes);
+  //             localStorage.setItem(
+  //               "vehicleTypes",
+  //               JSON.stringify(vehicletypes)
+  //             );
+  //           }
+  //         } else {
+  //         }
+  //       },
+  //       error: () => {},
+  //       complete: () => {},
+  //     });
+  //   };
 
-    queryApi();
-  };
+  //   queryApi();
+  // };
 
   useEffect(() => {
     handleValidation();
   }, [userData]);
 
-  useEffect(() => {
-    fetchVehicleTypes();
-    router.prefetch("/booking/available-trips");
-  }, []);
+  // useEffect(() => {
+  //   fetchVehicleTypes();
+  //   router.prefetch("/booking/available-trips");
+  // }, []);
 
   return (
     <form className="px-2 md:px-3 lg:px-2 w-full mt-8" onSubmit={handleForm}>

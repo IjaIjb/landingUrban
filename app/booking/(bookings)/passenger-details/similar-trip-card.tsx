@@ -105,7 +105,7 @@ export default function SimilarTripCard({ data }: PropT) {
               <div className="6/12">
                 <span>Pickup park</span>
                 <p className="text-sm lg:text-[0.66rem]">
-                  {departure.locationCity.name}, {departure.region}
+                  {departure?.locationCity?.name}, {departure?.region}
                 </p>
               </div>
               <div className="w-6/12 flex justify-end">
